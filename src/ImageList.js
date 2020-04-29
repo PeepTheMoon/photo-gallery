@@ -19,9 +19,13 @@ export default class ImageList extends Component {
                                 //else
                                 return creature.horns === Number(this.props.horns)
                             })
+                            .filter(creature => {
+                                if (!this.props.title) return true;
+                                //else
+                                return creature.title === this.props.title
+                            })
                             .map(creature => {
                             return <ImageItem creature={creature} />
-
                             })
                         }
                     </ul>

@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import creatureData from './data.js';
 import Header from './Header.js';
 import ImageList from './ImageList.js';
+import OptionList from './OptionList.js';
 import './App.css';
 
 export default class App extends Component {
-    state = { selected: null, horns: null };
+    state = { selected: null, horns: null , title: null};
 
     handleChange = (e) => {
       this.setState({ selected: e.target.value});
@@ -13,6 +14,10 @@ export default class App extends Component {
 
     handleHornChange = (e) => {
       this.setState({ horns: e.target.value});
+    };
+
+    handleTitleChange = (e) => {
+      this.setState({ title: e.target.value});
     };
 
   render() {
@@ -23,38 +28,32 @@ export default class App extends Component {
         </Header>
 
         <main>
+
           <section className="creature-options">
-            <select className="creature-keyword-filter" onChange={this.handleChange}>
-              <option value="" defaultValue>
-                All Creatures
-              </option>
-              <option value="narwhal">Narwhal</option>
-              <option value="rhino">Rhinocerous</option>
-              <option value="unicorn">Unicorn</option>
-              <option value="unilego">Unilego</option>
-              <option value="triceratops">Triceratops</option>
-              <option value="markhor">Markhor</option>
-              <option value="mouflon">Mouflon</option>
-              <option value="addax">Addax</option>
-              <option value="chameleon">Chameleon</option>
-              <option value="lizard">Lizard</option>
-              <option value="dragon">Dragon</option>
-            </select>
+            <OptionList
+                list={[...new Set(creatureData.map(creature => creature.keyword))]}
+                onChange={this.handleChange}
+                dropDown={'All Creatures'}
+                modifier={''}
+            />
+            <OptionList
+                list={[...new Set(creatureData.map(creature => creature.horns))]}
+                onChange={this.handleHornChange}
+                dropDown={'All Horn Quantities'}
+                modifier={'Horns'}
+            />
+            <OptionList
+                list={[...new Set(creatureData.map(creature => creature.title))]}
+                onChange={this.handleTitleChange}
+                dropDown={'All Titles'}
+                modifier={''}
+            />
           </section>
-
-          <section className="creature-horns">
-            <select className="creature-horn-filter" onChange={this.handleHornChange}>
-            <option value="" defaultValue>
-                All Horn Quantities
-              </option>
-              <option value="1">One Horn</option>
-              <option value="2">Two Horns</option>
-              <option value="3">Three Horns</option>
-              <option value="100">ONE HUNDRED Horns</option>
-            </select>
-          </section>
-
-          <ImageList data={ creatureData } select={ this.state.selected } horns={ this.state.horns }/>
+          <ImageList 
+              data={ creatureData } 
+              select={ this.state.selected } 
+              horns={ this.state.horns } 
+              title={ this.state.title }/>
         </main>
         
       </div>
