@@ -4,7 +4,7 @@ export default class ImageItem extends Component {
     render() {
         return (
         <li className="creature-card">
-            <div>
+            <div className="creature-details">
                 <h2>Title: {this.props.creature.title}</h2>
                 <p className="creature-description">Description: {this.props.creature.description}</p>
                 <p className="creature-horns">Has {this.props.creature.horns} horns!</p>
