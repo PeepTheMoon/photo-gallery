@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import creatureData from './data.js';
 import Header from './Header.js';
 import ImageList from './ImageList.js';
+import './App.css';
 
 export default class App extends Component {
     state = { selected: null, horns: null };
