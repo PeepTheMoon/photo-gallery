@@ -16,6 +16,7 @@ export default class ImageList extends Component {
                             })
                             .map(creature => {
                             return <ImageItem creature={creature} />
+
                             })
                         }
                     </ul>
