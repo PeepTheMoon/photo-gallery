@@ -49,8 +49,8 @@ export default class App extends Component {
               }
             </ul>
           </section> */}
-          <ImageList>
-            Yo yo hello!
+          <ImageList data={ creatureData } select={ this.state.selected }>
+            
           </ImageList>
         </main>
         
