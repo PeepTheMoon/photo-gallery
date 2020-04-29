@@ -4,10 +4,14 @@ import Header from './Header.js';
 import ImageList from './ImageList.js';
 
 export default class App extends Component {
-    state = { selected: null };
+    state = { selected: null, horns: null };
 
     handleChange = (e) => {
       this.setState({ selected: e.target.value});
+    };
+
+    handleHornChange = (e) => {
+      this.setState({ horns: e.target.value});
     };
 
   render() {
@@ -37,21 +41,19 @@ export default class App extends Component {
             </select>
           </section>
 
-          {/* <section className="creature-list-section">
-            <ul className="creatures">
-              {
-                creatureData
-                .filter(creature => {
-                  if (!this.state.selected) return true;
-                  //else
-                  return creature.keyword === this.state.selected;
-                })
-              }
-            </ul>
-          </section> */}
-          <ImageList data={ creatureData } select={ this.state.selected }>
-            
-          </ImageList>
+          <section className="creature-horns">
+            <select className="creature-horn-filter" onChange={this.handleHornChange}>
+            <option value="" defaultValue>
+                All Horn Quantities
+              </option>
+              <option value="1">One Horn</option>
+              <option value="2">Two Horns</option>
+              <option value="3">Three Horns</option>
+              <option value="100">ONE HUNDRED Horns</option>
+            </select>
+          </section>
+
+          <ImageList data={ creatureData } select={ this.state.selected } horns={ this.state.horns }/>
         </main>
         
       </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import ImageItem from './ImageItem.js';
+import Horns from './Horns.js';
 
-export default class ImageList extends Component {
+export default class Horns extends Component {
     render() {
         return (
             <div>
@@ -13,11 +13,6 @@ export default class ImageList extends Component {
                                 if (!this.props.select) return true;
                                 //else
                                 return creature.keyword === this.props.select;
-                            })
-                            .filter(creature => {
-                                if (!this.props.horns) return true;
-                                //else
-                                return creature.horns === Number(this.props.horns)
                             })
                             .map(creature => {
                             return <ImageItem creature={creature} />
